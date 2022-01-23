@@ -1,0 +1,31 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+workspace 'FindFalcone.xcworkspace'
+project 'FindFalcone.xcodeproj'
+project 'FalconeCore/FalconeCore.xcodeproj'
+
+def shared_pods
+  use_frameworks!
+  pod 'Alamofire', '~> 5.5'
+end
+
+target 'FalconeCore' do
+  shared_pods
+  project 'FalconeCore/FalconeCore.xcodeproj'
+end
+
+target 'FindFalcone' do
+  shared_pods
+  project 'FindFalcone.xcodeproj'
+
+  target 'FindFalconeTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'FindFalconeUITests' do
+    # Pods for testing
+  end
+
+end
