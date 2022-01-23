@@ -9,9 +9,8 @@ import UIKit
 
 final class SearchFalconeController: BaseViewController {
 
-
-
     //MARK: Outlets
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var labelGuide: UILabel!
     @IBOutlet weak var lblTakeTime: UILabel!
     @IBOutlet weak var btnSearch: UIButton!
@@ -52,6 +51,7 @@ final class SearchFalconeController: BaseViewController {
                                          .layerMaxXMinYCorner,
                                          .layerMinXMaxYCorner,
                                          .layerMinXMinYCorner]
+        tableView.register(SpaceVehicleCell.nib, forCellReuseIdentifier: SpaceVehicleCell.className)
     }
 }
 
@@ -67,7 +67,10 @@ extension SearchFalconeController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SpaceVehicleCell.className, for: indexPath) as? SpaceVehicleCell else {
+            return UITableViewCell()
+        }
+        return cell
     }
 }
 
@@ -75,7 +78,35 @@ extension SearchFalconeController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension SearchFalconeController: UITableViewDelegate {
 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let headerView = UIView.loadFromNib(named: SearchFalconeSectionHeaderView.className) as? SearchFalconeSectionHeaderView else {
+            return UIView()
+        }
+        headerView.title = SearchFalconeSection.allCases[section].title
+        headerView.onSelectPlanet = { [weak self] in
+            print("Select Planet")
+        }
+        return headerView
+    }
 
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.001
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? SpaceVehicleCell else {
+            return
+        }
+        cell.isSelectedVehicle = !cell.isSelectedVehicle
+    }
 }
 
 //MARK: - SearchFalcomView

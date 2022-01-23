@@ -39,9 +39,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="R1Y-Ge-bQx">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="R1Y-Ge-bQx">
                                 <rect key="frame" x="0.0" y="94.5" width="414" height="645.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="6My-uD-Rhd"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="S15-F4-HIv"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -67,6 +71,7 @@
                         <outlet property="btnSearch" destination="h3V-np-Kku" id="nmW-RF-zUy"/>
                         <outlet property="labelGuide" destination="MKG-aO-T60" id="aAp-qi-Y47"/>
                         <outlet property="lblTakeTime" destination="qp2-mf-Ybh" id="gp0-oR-RLa"/>
+                        <outlet property="tableView" destination="R1Y-Ge-bQx" id="rVO-nA-Vcl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

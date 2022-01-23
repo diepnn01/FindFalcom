@@ -7,6 +7,23 @@
 
 import Foundation
 
+enum SearchFalconeSection: Int, CaseIterable {
+    case destination1
+    case destination2
+    case destination3
+    case destination4
+
+    var title: String {
+        switch self {
+        case .destination1: return "Destination 1"
+        case .destination2: return "Destination 2"
+        case .destination3: return "Destination 3"
+        case .destination4: return "Destination 4"
+        }
+    }
+}
+
+
 class SearchFalconePresenter: SearchFalconeView {
 
     weak var view: SearchFalconeView?
@@ -16,7 +33,7 @@ class SearchFalconePresenter: SearchFalconeView {
     }
 
     func numberOfSections() -> Int {
-        return 4
+        return SearchFalconeSection.allCases.count
     }
 
     func numberOfRows(at section: Int) -> Int {

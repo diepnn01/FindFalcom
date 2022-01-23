@@ -98,6 +98,7 @@
 		F305D496279CFE1B0074AF34 /* FalconeCore */ = {
 			isa = PBXGroup;
 			children = (
+				F3CB06EB279D135500F3F226 /* Models */,
 				F305D497279CFE1B0074AF34 /* FalconeCore.h */,
 				F305D498279CFE1B0074AF34 /* FalconeCore.docc */,
 				F305D4AE279CFE2F0074AF34 /* TestCore.swift */,
@@ -111,6 +112,13 @@
 				F305D4A3279CFE1B0074AF34 /* FalconeCoreTests.swift */,
 			);
 			path = FalconeCoreTests;
+			sourceTree = "<group>";
+		};
+		F3CB06EB279D135500F3F226 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
