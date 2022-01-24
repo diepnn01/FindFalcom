@@ -22,6 +22,12 @@ final class SpaceVehicleCell: UITableViewCell {
         }
     }
 
+    var title: String? {
+        didSet {
+            labelTitle.text = title
+        }
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }

@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-public class GetPlanetsRouter: Router {
+public class FindFalconeRouter: Router {
     
     public func getPlanets() -> URLRequestConvertible {
         let path = buildValidFullPathForRequest("/planets")
@@ -20,5 +20,14 @@ public class GetPlanetsRouter: Router {
         let path = buildValidFullPathForRequest("/vehicles")
         return buildUrlRequest(Route(method: .get,
                                      path: path))
+    }
+
+    public func find(token: String, param: FindFalconeParam) -> URLRequestConvertible {
+        let path = buildValidFullPathForRequest("/find")
+        var params = param.toJsonParams()
+        params["token"] = token
+        return buildUrlRequest(Route(method: .post,
+                                     path: path,
+                                     jsonParams: params))
     }
 }

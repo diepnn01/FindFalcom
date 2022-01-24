@@ -29,11 +29,13 @@
 		F320901F279D0045005E4FA0 /* SearchFalconeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320901E279D0045005E4FA0 /* SearchFalconeController.swift */; };
 		F3209026279D00F8005E4FA0 /* SearchFalconeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320901A279D0010005E4FA0 /* SearchFalconeView.swift */; };
 		F3209028279D026C005E4FA0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F324E165279CF7B50034FEC3 /* Localizable.strings */; };
+		F354B574279EBCFA00912480 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354B573279EBCFA00912480 /* UIColor+Ext.swift */; };
 		F3CB06DE279D072700F3F226 /* SpaceVehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB06DC279D072700F3F226 /* SpaceVehicleCell.swift */; };
 		F3CB06DF279D072700F3F226 /* SpaceVehicleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3CB06DD279D072700F3F226 /* SpaceVehicleCell.xib */; };
 		F3CB06E1279D0B9100F3F226 /* SearchFalconeSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB06E0279D0B9100F3F226 /* SearchFalconeSectionHeaderView.swift */; };
 		F3CB06E3279D0BA800F3F226 /* SearchFalconeSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3CB06E2279D0BA800F3F226 /* SearchFalconeSectionHeaderView.xib */; };
 		F3CB06EA279D11F700F3F226 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB06E9279D11F700F3F226 /* UIView+Ext.swift */; };
+		F3CB0730279E9CE700F3F226 /* SelectPlanetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB072F279E9CE700F3F226 /* SelectPlanetController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,12 +108,14 @@
 		F324E160279CF7B50034FEC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F324E163279CF7B50034FEC3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F324E165279CF7B50034FEC3 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		F354B573279EBCFA00912480 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		F3C3C773279AC26B00CD75FC /* FindFalcomCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FindFalcomCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3CB06DC279D072700F3F226 /* SpaceVehicleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceVehicleCell.swift; sourceTree = "<group>"; };
 		F3CB06DD279D072700F3F226 /* SpaceVehicleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpaceVehicleCell.xib; sourceTree = "<group>"; };
 		F3CB06E0279D0B9100F3F226 /* SearchFalconeSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFalconeSectionHeaderView.swift; sourceTree = "<group>"; };
 		F3CB06E2279D0BA800F3F226 /* SearchFalconeSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchFalconeSectionHeaderView.xib; sourceTree = "<group>"; };
 		F3CB06E9279D11F700F3F226 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		F3CB072F279E9CE700F3F226 /* SelectPlanetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlanetController.swift; sourceTree = "<group>"; };
 		F9DB611830C9F23409A1502D /* Pods-FindFalcone-FindFalconeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindFalcone-FindFalconeUITests.debug.xcconfig"; path = "Target Support Files/Pods-FindFalcone-FindFalconeUITests/Pods-FindFalcone-FindFalconeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -185,6 +189,8 @@
 				F324E164279CF7B50034FEC3 /* Localizable */,
 				F305D436279CFBDE0074AF34 /* Assets.xcassets */,
 				F305D43B279CFBDE0074AF34 /* Info.plist */,
+				F324E15F279CF7B50034FEC3 /* LaunchScreen.storyboard */,
+				F324E161279CF7B50034FEC3 /* Main.storyboard */,
 				F305D433279CFBDC0074AF34 /* FindFalcone.xcdatamodeld */,
 			);
 			path = FindFalcone;
@@ -228,6 +234,7 @@
 		F324E14B279CF7B50034FEC3 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F3CB072E279E9CCD00F3F226 /* SelectPlanet */,
 				F324E14C279CF7B50034FEC3 /* BaseVC */,
 				F324E14E279CF7B50034FEC3 /* SearchFalcone */,
 				F324E150279CF7B50034FEC3 /* SearchResult */,
@@ -284,6 +291,7 @@
 				F324E15C279CF7B50034FEC3 /* String+Ext.swift */,
 				F324E15D279CF7B50034FEC3 /* NSObject+Ext.swift */,
 				F3CB06E9279D11F700F3F226 /* UIView+Ext.swift */,
+				F354B573279EBCFA00912480 /* UIColor+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -291,8 +299,6 @@
 		F324E15E279CF7B50034FEC3 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				F324E15F279CF7B50034FEC3 /* LaunchScreen.storyboard */,
-				F324E161279CF7B50034FEC3 /* Main.storyboard */,
 				F324E163279CF7B50034FEC3 /* AppDelegate.swift */,
 			);
 			path = Infrastructure;
@@ -344,6 +350,14 @@
 				F3CB06DD279D072700F3F226 /* SpaceVehicleCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		F3CB072E279E9CCD00F3F226 /* SelectPlanet */ = {
+			isa = PBXGroup;
+			children = (
+				F3CB072F279E9CE700F3F226 /* SelectPlanetController.swift */,
+			);
+			path = SelectPlanet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -599,7 +613,9 @@
 				F320901D279D0020005E4FA0 /* SearchFalconePresenter.swift in Sources */,
 				F305D435279CFBDC0074AF34 /* FindFalcone.xcdatamodeld in Sources */,
 				F3CB06EA279D11F700F3F226 /* UIView+Ext.swift in Sources */,
+				F3CB0730279E9CE700F3F226 /* SelectPlanetController.swift in Sources */,
 				F305D461279CFCA10074AF34 /* AppDelegate.swift in Sources */,
+				F354B574279EBCFA00912480 /* UIColor+Ext.swift in Sources */,
 				F320901F279D0045005E4FA0 /* SearchFalconeController.swift in Sources */,
 				F305D45D279CFC600074AF34 /* BaseViewController.swift in Sources */,
 			);

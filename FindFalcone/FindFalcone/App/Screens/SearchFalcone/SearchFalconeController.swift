@@ -23,6 +23,13 @@ final class SearchFalconeController: BaseViewController {
         }
     }
 
+    private var enableSearch: Bool = false {
+        didSet {
+            btnSearch.isEnabled = enableSearch
+            btnSearch.backgroundColor = enableSearch ? UIColor("#4991DC") : .gray
+        }
+    }
+
     override func loadView() {
         super.loadView()
         presenter = SearchFalconePresenter()
@@ -32,6 +39,7 @@ final class SearchFalconeController: BaseViewController {
         super.viewDidLoad()
         setupPresenter()
         setupUI()
+        presenter.prepareData()
         presenter.getUserToken()
     }
 
@@ -52,7 +60,24 @@ final class SearchFalconeController: BaseViewController {
                                          .layerMaxXMinYCorner,
                                          .layerMinXMaxYCorner,
                                          .layerMinXMinYCorner]
+        enableSearch = false
         tableView.register(SpaceVehicleCell.nib, forCellReuseIdentifier: SpaceVehicleCell.className)
+    }
+
+    private func selectPlanet(at section: Int) {
+        let planetsVC = UIStoryboard.loadController(from: "Main", of: SelectPlanetController.self)
+        planetsVC.planets = presenter.enablePlanets(at: section)
+        planetsVC.currentPlanet = presenter.sections[section].planet
+        planetsVC.onSelectedPlanet = { [weak self] newPlanet in
+            self?.presenter.sections[section].planet = newPlanet
+            self?.tableView.reloadSections([section], with: .automatic)
+
+        }
+        navigationController?.pushViewController(planetsVC, animated: true)
+    }
+
+    @IBAction private func actionFindFalcone(_ sender: UIButton) {
+        presenter.findFalcone()
     }
 }
 
@@ -71,6 +96,8 @@ extension SearchFalconeController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SpaceVehicleCell.className, for: indexPath) as? SpaceVehicleCell else {
             return UITableViewCell()
         }
+        cell.title = presenter.vehicles[indexPath.row].name
+        cell.isSelectedVehicle = presenter.vehicles[indexPath.row].name == self.presenter.sections[indexPath.section].vehicle?.name
         return cell
     }
 }
@@ -83,9 +110,11 @@ extension SearchFalconeController: UITableViewDelegate {
         guard let headerView = UIView.loadFromNib(named: SearchFalconeSectionHeaderView.className) as? SearchFalconeSectionHeaderView else {
             return UIView()
         }
-        headerView.title = SearchFalconeSection.allCases[section].title
+        let sectionModel = presenter.sections[section]
+        headerView.title = sectionModel.destination.title
+        headerView.planet = sectionModel.planet
         headerView.onSelectPlanet = { [weak self] in
-            print("Select Planet")
+            self?.selectPlanet(at: section)
         }
         return headerView
     }
@@ -103,15 +132,32 @@ extension SearchFalconeController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? SpaceVehicleCell else {
+        guard self.presenter.sections[indexPath.section].vehicle?.name != presenter.vehicles[indexPath.row].name else {
             return
         }
-        cell.isSelectedVehicle = !cell.isSelectedVehicle
+
+        var indexPaths = [IndexPath]()
+        for index in 0..<presenter.vehicles.count {
+            indexPaths.append(IndexPath(row: index, section: indexPath.section))
+        }
+
+        // update selected vehicle
+        self.presenter.sections[indexPath.section].vehicle = presenter.vehicles[indexPath.row]
+        self.tableView.reloadRows(at: indexPaths, with: .automatic)
+        
+        // update search falcone button status
+        self.enableSearch = self.presenter.enableButtonFindFalcone()
+
+        // update time taken
+        timeTaken = presenter.calculateTimeTaken()
     }
 }
 
 //MARK: - SearchFalcomView
 extension SearchFalconeController: SearchFalconeView {
 
+    func prepareDataCompleted() {
+        tableView.reloadData()
+    }
 }
 

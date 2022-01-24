@@ -47,13 +47,9 @@ public final class ServiceRequest<T: CoreObject> {
 
         switch response.result {
         case .success:
-            if let data = response.data {
-                if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [AnyHashable: Any] {
-                    let obj = T.init(data: json as [AnyHashable: Any])
-                    cloudResponseClosure?(obj)
-                } else {
-                    cloudErrorClosure?("Bad format", 500)
-                }
+            if let json = JSONUtils.toDictionary(response.data) {
+                let obj = T.init(data: json as [AnyHashable: Any])
+                cloudResponseClosure?(obj)
             } else {
                 cloudErrorClosure?("Bad format", 500)
             }
@@ -69,18 +65,13 @@ public final class ServiceRequest<T: CoreObject> {
 
         switch response.result {
         case .success:
-            if let data = response.data {
-                if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[AnyHashable: Any]] {
-                    let items = [
-                        "items": json
-                    ]
-                    let obj = T.init(data: items as [AnyHashable: Any])
-                    cloudResponseClosure?(obj)
-                } else {
-                    cloudErrorClosure?("Bad format", 500)
-                }
-            }
-            else {
+            if let dicts = JSONUtils.toArrayDictionary(response.data) {
+                let items = [
+                    "items": dicts
+                ]
+                let obj = T.init(data: items as [AnyHashable: Any])
+                cloudResponseClosure?(obj)
+            } else {
                 cloudErrorClosure?("Bad format", 500)
             }
         case .failure(let error):

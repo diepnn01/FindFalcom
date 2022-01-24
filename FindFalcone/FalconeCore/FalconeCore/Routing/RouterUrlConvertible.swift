@@ -33,6 +33,7 @@ final class RouterUrlConvertible: URLRequestConvertible {
             buildUrlRequest = try? jsonEncoding.encode(urlRequestUnwrapp, with: bodyParams)
         }
         buildUrlRequest?.headers["Accept"] = "application/json"
+        buildUrlRequest?.headers["Content-Type"] = "application/json"
         urlRequest = buildUrlRequest
     }
 

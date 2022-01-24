@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FalconeCore
 
 final class SearchFalconeSectionHeaderView: UIView {
 
@@ -23,6 +24,12 @@ final class SearchFalconeSectionHeaderView: UIView {
     var title: String? {
         didSet {
             labelTitle.text = title
+        }
+    }
+
+    var planet: Planet? {
+        didSet {
+            labelDescription.text = planet?.name ?? "Select"
         }
     }
 
