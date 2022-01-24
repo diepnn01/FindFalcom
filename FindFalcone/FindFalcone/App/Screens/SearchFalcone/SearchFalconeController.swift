@@ -32,6 +32,7 @@ final class SearchFalconeController: BaseViewController {
         super.viewDidLoad()
         setupPresenter()
         setupUI()
+        presenter.getUserToken()
     }
 
     //MARK: Private methods

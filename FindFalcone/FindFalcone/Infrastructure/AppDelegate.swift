@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 import FalconeCore
+import netfox
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
+        NFX.sharedInstance().start()
         let searchFalcomVC = UIStoryboard.loadController(from: "Main", of: SearchFalconeController.self)
         rootNavi = UINavigationController(rootViewController: searchFalcomVC)
         window?.rootViewController = rootNavi

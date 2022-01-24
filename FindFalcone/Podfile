@@ -17,6 +17,7 @@ end
 
 target 'FindFalcone' do
   shared_pods
+  pod 'netfox'
   project 'FindFalcone.xcodeproj'
 
   target 'FindFalconeTests' do

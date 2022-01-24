@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FalconeCore
 
 enum SearchFalconeSection: Int, CaseIterable {
     case destination1
@@ -27,9 +28,31 @@ enum SearchFalconeSection: Int, CaseIterable {
 class SearchFalconePresenter: SearchFalconeView {
 
     weak var view: SearchFalconeView?
-
+    private let service = GetUserTokenService()
+    private let planetService = GetPlanetsService()
     func attachView(_ view: SearchFalconeView) {
         self.view = view
+    }
+
+    func getUserToken() {
+        service.getUserToken().cloudResponse { userSession in
+            print("Token \(userSession.token)")
+        }.cloudError { status, code in
+            //
+        }.finally {
+            //
+        }
+
+        planetService.getPlanets().cloudResponse { planets in
+            print("Here we go")
+        }.cloudError { status, code in
+            print("ddd")
+        }
+        planetService.getVehicles().cloudResponse { vehicles in
+            print("Here we go")
+        }.cloudError { status, code in
+            print("ddd")
+        }
     }
 
     func numberOfSections() -> Int {

@@ -13,6 +13,22 @@
 		F305D4A4279CFE1B0074AF34 /* FalconeCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F305D4A3279CFE1B0074AF34 /* FalconeCoreTests.swift */; };
 		F305D4A5279CFE1B0074AF34 /* FalconeCore.h in Headers */ = {isa = PBXBuildFile; fileRef = F305D497279CFE1B0074AF34 /* FalconeCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F305D4AF279CFE2F0074AF34 /* TestCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F305D4AE279CFE2F0074AF34 /* TestCore.swift */; };
+		F3CB06F0279DB53200F3F226 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB06EF279DB53200F3F226 /* Router.swift */; };
+		F3CB06F2279DB54B00F3F226 /* RouterUrlConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB06F1279DB54B00F3F226 /* RouterUrlConvertible.swift */; };
+		F3CB06F4279DB60F00F3F226 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB06F3279DB60F00F3F226 /* Route.swift */; };
+		F3CB06FB279DB68000F3F226 /* ServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB06F6279DB68000F3F226 /* ServiceRequest.swift */; };
+		F3CB06FC279DB68000F3F226 /* RequestParameterObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB06F7279DB68000F3F226 /* RequestParameterObject.swift */; };
+		F3CB06FD279DB68000F3F226 /* CoreObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB06F8279DB68000F3F226 /* CoreObject.swift */; };
+		F3CB0701279E3FE100F3F226 /* GetUserTokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB0700279E3FE100F3F226 /* GetUserTokenService.swift */; };
+		F3CB0703279E48D500F3F226 /* GetUserTokenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB0702279E48D500F3F226 /* GetUserTokenRouter.swift */; };
+		F3CB0706279E501C00F3F226 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB0705279E501C00F3F226 /* UserSession.swift */; };
+		F3CB0708279E620F00F3F226 /* GetPlanetsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB0707279E620F00F3F226 /* GetPlanetsService.swift */; };
+		F3CB070A279E625700F3F226 /* GetPlanetsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB0709279E625700F3F226 /* GetPlanetsRouter.swift */; };
+		F3CB070D279E639100F3F226 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB070C279E639100F3F226 /* Planet.swift */; };
+		F3CB0712279E654700F3F226 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB0711279E654700F3F226 /* Vehicle.swift */; };
+		F3CB071C279E807D00F3F226 /* JSONUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB071B279E807D00F3F226 /* JSONUtils.swift */; };
+		F3CB071E279E886800F3F226 /* VehicleCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB071D279E886800F3F226 /* VehicleCollection.swift */; };
+		F3CB0720279E8BB500F3F226 /* PlanetCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB071F279E8BB500F3F226 /* PlanetCollection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +51,22 @@
 		F305D49E279CFE1B0074AF34 /* FalconeCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FalconeCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F305D4A3279CFE1B0074AF34 /* FalconeCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalconeCoreTests.swift; sourceTree = "<group>"; };
 		F305D4AE279CFE2F0074AF34 /* TestCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCore.swift; sourceTree = "<group>"; };
+		F3CB06EF279DB53200F3F226 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		F3CB06F1279DB54B00F3F226 /* RouterUrlConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterUrlConvertible.swift; sourceTree = "<group>"; };
+		F3CB06F3279DB60F00F3F226 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		F3CB06F6279DB68000F3F226 /* ServiceRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceRequest.swift; sourceTree = "<group>"; };
+		F3CB06F7279DB68000F3F226 /* RequestParameterObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestParameterObject.swift; sourceTree = "<group>"; };
+		F3CB06F8279DB68000F3F226 /* CoreObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreObject.swift; sourceTree = "<group>"; };
+		F3CB0700279E3FE100F3F226 /* GetUserTokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserTokenService.swift; sourceTree = "<group>"; };
+		F3CB0702279E48D500F3F226 /* GetUserTokenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserTokenRouter.swift; sourceTree = "<group>"; };
+		F3CB0705279E501C00F3F226 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
+		F3CB0707279E620F00F3F226 /* GetPlanetsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlanetsService.swift; sourceTree = "<group>"; };
+		F3CB0709279E625700F3F226 /* GetPlanetsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlanetsRouter.swift; sourceTree = "<group>"; };
+		F3CB070C279E639100F3F226 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
+		F3CB0711279E654700F3F226 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		F3CB071B279E807D00F3F226 /* JSONUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONUtils.swift; sourceTree = "<group>"; };
+		F3CB071D279E886800F3F226 /* VehicleCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleCollection.swift; sourceTree = "<group>"; };
+		F3CB071F279E8BB500F3F226 /* PlanetCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetCollection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +130,9 @@
 		F305D496279CFE1B0074AF34 /* FalconeCore */ = {
 			isa = PBXGroup;
 			children = (
+				F3CB071A279E805300F3F226 /* Utils */,
+				F3CB06ED279DB50B00F3F226 /* Routing */,
+				F3CB06EC279DB50200F3F226 /* Services */,
 				F3CB06EB279D135500F3F226 /* Models */,
 				F305D497279CFE1B0074AF34 /* FalconeCore.h */,
 				F305D498279CFE1B0074AF34 /* FalconeCore.docc */,
@@ -117,8 +152,85 @@
 		F3CB06EB279D135500F3F226 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F3CB0710279E647300F3F226 /* Vehicle */,
+				F3CB070B279E638300F3F226 /* Planet */,
+				F3CB0704279E500400F3F226 /* User */,
+				F3CB06F5279DB68000F3F226 /* Common */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F3CB06EC279DB50200F3F226 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F3CB0700279E3FE100F3F226 /* GetUserTokenService.swift */,
+				F3CB0707279E620F00F3F226 /* GetPlanetsService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F3CB06ED279DB50B00F3F226 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				F3CB06EE279DB51300F3F226 /* Routers */,
+				F3CB06EF279DB53200F3F226 /* Router.swift */,
+				F3CB06F3279DB60F00F3F226 /* Route.swift */,
+				F3CB06F1279DB54B00F3F226 /* RouterUrlConvertible.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
+		F3CB06EE279DB51300F3F226 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				F3CB0702279E48D500F3F226 /* GetUserTokenRouter.swift */,
+				F3CB0709279E625700F3F226 /* GetPlanetsRouter.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
+		F3CB06F5279DB68000F3F226 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F3CB06F6279DB68000F3F226 /* ServiceRequest.swift */,
+				F3CB06F7279DB68000F3F226 /* RequestParameterObject.swift */,
+				F3CB06F8279DB68000F3F226 /* CoreObject.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		F3CB0704279E500400F3F226 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				F3CB0705279E501C00F3F226 /* UserSession.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		F3CB070B279E638300F3F226 /* Planet */ = {
+			isa = PBXGroup;
+			children = (
+				F3CB071F279E8BB500F3F226 /* PlanetCollection.swift */,
+				F3CB070C279E639100F3F226 /* Planet.swift */,
+			);
+			path = Planet;
+			sourceTree = "<group>";
+		};
+		F3CB0710279E647300F3F226 /* Vehicle */ = {
+			isa = PBXGroup;
+			children = (
+				F3CB0711279E654700F3F226 /* Vehicle.swift */,
+				F3CB071D279E886800F3F226 /* VehicleCollection.swift */,
+			);
+			path = Vehicle;
+			sourceTree = "<group>";
+		};
+		F3CB071A279E805300F3F226 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F3CB071B279E807D00F3F226 /* JSONUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +368,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3CB0712279E654700F3F226 /* Vehicle.swift in Sources */,
+				F3CB0703279E48D500F3F226 /* GetUserTokenRouter.swift in Sources */,
+				F3CB070A279E625700F3F226 /* GetPlanetsRouter.swift in Sources */,
+				F3CB06FC279DB68000F3F226 /* RequestParameterObject.swift in Sources */,
 				F305D4AF279CFE2F0074AF34 /* TestCore.swift in Sources */,
+				F3CB0708279E620F00F3F226 /* GetPlanetsService.swift in Sources */,
+				F3CB06F0279DB53200F3F226 /* Router.swift in Sources */,
+				F3CB06FD279DB68000F3F226 /* CoreObject.swift in Sources */,
+				F3CB06F2279DB54B00F3F226 /* RouterUrlConvertible.swift in Sources */,
+				F3CB0701279E3FE100F3F226 /* GetUserTokenService.swift in Sources */,
+				F3CB070D279E639100F3F226 /* Planet.swift in Sources */,
+				F3CB0720279E8BB500F3F226 /* PlanetCollection.swift in Sources */,
+				F3CB06F4279DB60F00F3F226 /* Route.swift in Sources */,
 				F305D499279CFE1B0074AF34 /* FalconeCore.docc in Sources */,
+				F3CB06FB279DB68000F3F226 /* ServiceRequest.swift in Sources */,
+				F3CB071C279E807D00F3F226 /* JSONUtils.swift in Sources */,
+				F3CB0706279E501C00F3F226 /* UserSession.swift in Sources */,
+				F3CB071E279E886800F3F226 /* VehicleCollection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
