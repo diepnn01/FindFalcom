@@ -1,0 +1,6 @@
+framework module Pods_FindFalcone_FindFalconeUITests {
+  umbrella header "Pods-FindFalcone-FindFalconeUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
