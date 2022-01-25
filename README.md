@@ -8,7 +8,7 @@
 
 ```bash
 git clone https://github.com/diepnn01/FindFalcom.git
-cd FindFalcone
+cd FindFalcom/FindFalcone
 pod install
 open FindFalcone.xcworkspace
 Select target "FindFalcone" and device, and Cmd + R.
