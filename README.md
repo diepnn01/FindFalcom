@@ -15,13 +15,19 @@ Select target "FindFalcone" and device, and Cmd + R.
 ```
 
 ## Project structure
+
 * FalconeCore
-> Define models
-> Define services to work with network
-> Define Routers how to connect network
+```bash
+Define models
+Define services to work with network
+Define Routers how to connect network
+```
 
 * FindFalcone App
->> Using MVP architecture
-> App/Presenters
-> App/Screens
-> App/Views
+```bash
+Using MVP architecture
+
+App/Presenters
+App/Screens
+App/Views
+```
