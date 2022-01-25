@@ -8,34 +8,7 @@
 import Foundation
 import FalconeCore
 
-enum SearchFalconeSection: Int, CaseIterable {
-    case destination1
-    case destination2
-    case destination3
-    case destination4
-
-    var title: String {
-        switch self {
-        case .destination1: return "Destination 1"
-        case .destination2: return "Destination 2"
-        case .destination3: return "Destination 3"
-        case .destination4: return "Destination 4"
-        }
-    }
-}
-
-struct SearchFalconeSectionModel {
-    var destination: SearchFalconeSection
-    var planet: Planet?
-    var vehicle: Vehicle?
-
-    init(_ destination: SearchFalconeSection) {
-        self.destination = destination
-    }
-}
-
-
-class SearchFalconePresenter {
+final class SearchFalconePresenter {
 
     weak var view: SearchFalconeView?
     private let service = GetUserTokenService()
@@ -45,6 +18,7 @@ class SearchFalconePresenter {
     var planets = [Planet]()
     var vehicles = [Vehicle]()
     var token = ""
+
     init() {
         sections.append(SearchFalconeSectionModel(.destination1))
         sections.append(SearchFalconeSectionModel(.destination2))
@@ -74,22 +48,22 @@ class SearchFalconePresenter {
         dispatchGroup.enter()
         self.findFalconeService.getPlanets().cloudResponse { [weak self] collection in
             self?.planets = collection.items
-            dispatchGroup.leave()
         }.cloudError { status, code in
-            print("ddd")
+            print("\(status) \(code)")
+        }.finally {
             dispatchGroup.leave()
         }
         dispatchGroup.enter()
         self.findFalconeService.getVehicles().cloudResponse { [weak self] collection in
             self?.vehicles = collection.items
-            dispatchGroup.leave()
         }.cloudError { status, code in
-            print("ddd")
+            print("\(status) \(code)")
+        }.finally {
             dispatchGroup.leave()
         }
 
         dispatchGroup.notify(queue: .main) { [weak self] in
-            self?.view?.prepareDataCompleted()
+            self?.view?.onPrepareDataCompleted()
         }
     }
 
@@ -120,11 +94,12 @@ class SearchFalconePresenter {
         findFalconeParams.vehicles = sections.map({$0.vehicle}).compactMap({$0})
         findFalconeParams.planets = sections.map({$0.planet}).compactMap({$0})
 
-        findFalconeService.find(token: token, param: findFalconeParams).cloudResponse { result in
-            print("Success \(result)")
-        }.cloudError { status, code in
-            print("Error")
-        }
+        findFalconeService.find(token: token, param: findFalconeParams)
+            .cloudResponse { [weak self] result in
+                self?.view?.onSearchFalconeCompeted(result)
+            }.cloudError { [weak self] (status, code) in
+                self?.view?.onError(status)
+            }
     }
 
     func numberOfSections() -> Int {

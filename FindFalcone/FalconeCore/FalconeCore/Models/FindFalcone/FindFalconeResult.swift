@@ -8,8 +8,8 @@
 import Foundation
 
 public struct FindFalconeResult: CoreObject {
-    var status: String?
-    var planetName: String?
+    public var status: String?
+    public var planetName: String?
 
     public init(data: [AnyHashable : Any]?) {
         status = data?["status"] as? String

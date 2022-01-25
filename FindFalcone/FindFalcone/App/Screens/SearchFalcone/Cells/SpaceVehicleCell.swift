@@ -18,7 +18,7 @@ final class SpaceVehicleCell: UITableViewCell {
 
     var isSelectedVehicle: Bool = false {
         didSet {
-            imvCheckBox.image = UIImage(named: isSelectedVehicle ? "radiobox-marked_30" : "radiobox-blank_30")
+            imvCheckBox.image = UIImage(named: isSelectedVehicle ? "radiobox-marked_30" : "radiobox-blank_30")?.withRenderingMode(.alwaysTemplate)
         }
     }
 
@@ -28,8 +28,10 @@ final class SpaceVehicleCell: UITableViewCell {
         }
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    var isDisable: Bool = false {
+        didSet {
+            imvCheckBox.tintColor = isDisable ? .gray : .black
+            labelTitle.textColor = isDisable ? .gray : .black
+        }
     }
-    
 }

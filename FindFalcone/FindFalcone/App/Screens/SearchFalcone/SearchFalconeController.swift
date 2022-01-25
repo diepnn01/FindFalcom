@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import ProgressHUD
+import FalconeCore
 
 final class SearchFalconeController: BaseViewController {
 
@@ -39,6 +41,8 @@ final class SearchFalconeController: BaseViewController {
         super.viewDidLoad()
         setupPresenter()
         setupUI()
+
+        showProgressHUD()
         presenter.prepareData()
         presenter.getUserToken()
     }
@@ -70,13 +74,21 @@ final class SearchFalconeController: BaseViewController {
         planetsVC.currentPlanet = presenter.sections[section].planet
         planetsVC.onSelectedPlanet = { [weak self] newPlanet in
             self?.presenter.sections[section].planet = newPlanet
+            self?.presenter.sections[section].vehicle = nil
             self?.tableView.reloadSections([section], with: .automatic)
 
         }
         navigationController?.pushViewController(planetsVC, animated: true)
     }
 
+    private func showProgressHUD() {
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.colorHUD = UIColor("#4991DC")
+        ProgressHUD.show()
+    }
+
     @IBAction private func actionFindFalcone(_ sender: UIButton) {
+        showProgressHUD()
         presenter.findFalcone()
     }
 }
@@ -96,8 +108,11 @@ extension SearchFalconeController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SpaceVehicleCell.className, for: indexPath) as? SpaceVehicleCell else {
             return UITableViewCell()
         }
-        cell.title = presenter.vehicles[indexPath.row].name
-        cell.isSelectedVehicle = presenter.vehicles[indexPath.row].name == self.presenter.sections[indexPath.section].vehicle?.name
+        let sectionModel = presenter.sections[indexPath.section]
+        let vehicle = presenter.vehicles[indexPath.row]
+        cell.title = vehicle.name
+        cell.isDisable = vehicle.maxDistance < (sectionModel.planet?.distance ?? 0)
+        cell.isSelectedVehicle = vehicle.name == sectionModel.vehicle?.name
         return cell
     }
 }
@@ -136,6 +151,10 @@ extension SearchFalconeController: UITableViewDelegate {
             return
         }
 
+        guard let cell = tableView.cellForRow(at: indexPath) as? SpaceVehicleCell, !cell.isDisable else {
+            return
+        }
+
         var indexPaths = [IndexPath]()
         for index in 0..<presenter.vehicles.count {
             indexPaths.append(IndexPath(row: index, section: indexPath.section))
@@ -156,8 +175,25 @@ extension SearchFalconeController: UITableViewDelegate {
 //MARK: - SearchFalcomView
 extension SearchFalconeController: SearchFalconeView {
 
-    func prepareDataCompleted() {
+    func onPrepareDataCompleted() {
+        ProgressHUD.dismiss()
         tableView.reloadData()
+    }
+
+    func onSearchFalconeCompeted(_ falcone: FindFalconeResult) {
+        ProgressHUD.dismiss()
+        guard falcone.status == "success" else {
+            return
+        }
+        let resultVC = UIStoryboard.loadController(from: "Main", of: SearchResultController.self)
+        resultVC.result = falcone
+        resultVC.timeTaken = timeTaken
+        navigationController?.pushViewController(resultVC, animated: true)
+    }
+
+    func onError(_ errorMsg: String) {
+        //TODO: handle error here
+        ProgressHUD.dismiss()
     }
 }
 

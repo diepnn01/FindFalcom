@@ -6,7 +6,13 @@
 //
 
 import Foundation
+import FalconeCore
 
 protocol SearchFalconeView: AnyObject {
-    func prepareDataCompleted()
+
+    func onPrepareDataCompleted()
+
+    func onSearchFalconeCompeted(_ falcone: FindFalconeResult)
+
+    func onError(_ errorMsg: String)
 }

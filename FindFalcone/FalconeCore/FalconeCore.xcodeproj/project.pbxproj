@@ -13,6 +13,7 @@
 		F305D4A4279CFE1B0074AF34 /* FalconeCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F305D4A3279CFE1B0074AF34 /* FalconeCoreTests.swift */; };
 		F305D4A5279CFE1B0074AF34 /* FalconeCore.h in Headers */ = {isa = PBXBuildFile; fileRef = F305D497279CFE1B0074AF34 /* FalconeCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F305D4AF279CFE2F0074AF34 /* TestCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F305D4AE279CFE2F0074AF34 /* TestCore.swift */; };
+		F30AB90D279FB163004B9349 /* SearchFalconeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30AB90C279FB163004B9349 /* SearchFalconeSection.swift */; };
 		F3CB06F0279DB53200F3F226 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB06EF279DB53200F3F226 /* Router.swift */; };
 		F3CB06F2279DB54B00F3F226 /* RouterUrlConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB06F1279DB54B00F3F226 /* RouterUrlConvertible.swift */; };
 		F3CB06F4279DB60F00F3F226 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB06F3279DB60F00F3F226 /* Route.swift */; };
@@ -53,6 +54,7 @@
 		F305D49E279CFE1B0074AF34 /* FalconeCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FalconeCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F305D4A3279CFE1B0074AF34 /* FalconeCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalconeCoreTests.swift; sourceTree = "<group>"; };
 		F305D4AE279CFE2F0074AF34 /* TestCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCore.swift; sourceTree = "<group>"; };
+		F30AB90C279FB163004B9349 /* SearchFalconeSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFalconeSection.swift; sourceTree = "<group>"; };
 		F3CB06EF279DB53200F3F226 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		F3CB06F1279DB54B00F3F226 /* RouterUrlConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterUrlConvertible.swift; sourceTree = "<group>"; };
 		F3CB06F3279DB60F00F3F226 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 			children = (
 				F3CB0726279E912700F3F226 /* FindFalconeParam.swift */,
 				F3CB072C279E93B100F3F226 /* FindFalconeResult.swift */,
+				F30AB90C279FB163004B9349 /* SearchFalconeSection.swift */,
 			);
 			path = FindFalcone;
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 				F3CB06F4279DB60F00F3F226 /* Route.swift in Sources */,
 				F305D499279CFE1B0074AF34 /* FalconeCore.docc in Sources */,
 				F3CB06FB279DB68000F3F226 /* ServiceRequest.swift in Sources */,
+				F30AB90D279FB163004B9349 /* SearchFalconeSection.swift in Sources */,
 				F3CB071C279E807D00F3F226 /* JSONUtils.swift in Sources */,
 				F3CB0706279E501C00F3F226 /* UserSession.swift in Sources */,
 				F3CB071E279E886800F3F226 /* VehicleCollection.swift in Sources */,
