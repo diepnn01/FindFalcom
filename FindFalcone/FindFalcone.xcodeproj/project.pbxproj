@@ -22,6 +22,7 @@
 		F305D462279CFCA50074AF34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F324E15F279CF7B50034FEC3 /* LaunchScreen.storyboard */; };
 		F305D487279CFDE30074AF34 /* FalconeCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F305D486279CFDE30074AF34 /* FalconeCore.framework */; };
 		F305D488279CFDE30074AF34 /* FalconeCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F305D486279CFDE30074AF34 /* FalconeCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F30AB90F279FC066004B9349 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30AB90E279FC066004B9349 /* AppColor.swift */; };
 		F3209017279CFF61005E4FA0 /* NSObject+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F324E15D279CF7B50034FEC3 /* NSObject+Ext.swift */; };
 		F3209018279CFF61005E4FA0 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F324E15C279CF7B50034FEC3 /* String+Ext.swift */; };
 		F3209019279CFF61005E4FA0 /* UIStoryboard+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F324E15B279CF7B50034FEC3 /* UIStoryboard+Ext.swift */; };
@@ -95,6 +96,7 @@
 		F305D450279CFBDE0074AF34 /* FindFalconeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFalconeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F305D463279CFD180074AF34 /* FindFalconeCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FindFalconeCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F305D486279CFDE30074AF34 /* FalconeCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FalconeCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F30AB90E279FC066004B9349 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		F320901A279D0010005E4FA0 /* SearchFalconeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFalconeView.swift; sourceTree = "<group>"; };
 		F320901C279D0020005E4FA0 /* SearchFalconePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFalconePresenter.swift; sourceTree = "<group>"; };
 		F320901E279D0045005E4FA0 /* SearchFalconeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFalconeController.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				F324E15A279CF7B50034FEC3 /* Extensions */,
+				F30AB90E279FC066004B9349 /* AppColor.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				F3CB06E1279D0B9100F3F226 /* SearchFalconeSectionHeaderView.swift in Sources */,
 				F320901D279D0020005E4FA0 /* SearchFalconePresenter.swift in Sources */,
 				F305D435279CFBDC0074AF34 /* FindFalcone.xcdatamodeld in Sources */,
+				F30AB90F279FC066004B9349 /* AppColor.swift in Sources */,
 				F3CB06EA279D11F700F3F226 /* UIView+Ext.swift in Sources */,
 				F3CB0730279E9CE700F3F226 /* SelectPlanetController.swift in Sources */,
 				F305D461279CFCA10074AF34 /* AppDelegate.swift in Sources */,

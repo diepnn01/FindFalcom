@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FalconeCore
 
 final class SpaceVehicleCell: UITableViewCell {
 
@@ -22,9 +23,9 @@ final class SpaceVehicleCell: UITableViewCell {
         }
     }
 
-    var title: String? {
+    var vehicle: Vehicle? {
         didSet {
-            labelTitle.text = title
+            labelTitle.text = "\(vehicle?.name ?? "") (\(vehicle?.totalNo ?? 0))"
         }
     }
 

@@ -33,3 +33,11 @@ public struct SearchFalconeSectionModel {
         self.destination = destination
     }
 }
+
+public struct SearchFalconeRowModel {
+    public var vehicle: Vehicle
+    public var isEnable: Bool = true
+    public init(_ vehicle: Vehicle) {
+        self.vehicle = vehicle
+    }
+}

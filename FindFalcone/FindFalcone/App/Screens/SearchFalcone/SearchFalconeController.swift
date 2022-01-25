@@ -21,17 +21,18 @@ final class SearchFalconeController: BaseViewController {
     private var presenter: SearchFalconePresenter!
     private var timeTaken: Int = 0 {
         didSet {
-            lblTakeTime.text = "Time taken: \(timeTaken)"
+            lblTakeTime.text = "\("FindingFalcone.TimeTaken".localized): \(timeTaken)"
         }
     }
 
     private var enableSearch: Bool = false {
         didSet {
             btnSearch.isEnabled = enableSearch
-            btnSearch.backgroundColor = enableSearch ? UIColor("#4991DC") : .gray
+            btnSearch.backgroundColor = enableSearch ? AppColor.COLOR_4991DC : .gray
         }
     }
 
+    //MARK: Public methods
     override func loadView() {
         super.loadView()
         presenter = SearchFalconePresenter()
@@ -41,8 +42,6 @@ final class SearchFalconeController: BaseViewController {
         super.viewDidLoad()
         setupPresenter()
         setupUI()
-
-        showProgressHUD()
         presenter.prepareData()
         presenter.getUserToken()
     }
@@ -55,9 +54,9 @@ final class SearchFalconeController: BaseViewController {
     private func setupUI() {
         timeTaken = 0
         title = "FindingFalcone.Title".localized
-        labelGuide.text = "Select planets you want to search in:"
+        labelGuide.text = "FindingFalcone.Guide".localized
 
-        btnSearch.setTitle("Find Falcone!", for: .normal)
+        btnSearch.setTitle("FindingFalcone.BtnSearch.Title".localized, for: .normal)
         btnSearch.setTitleColor(.white, for: .normal)
         btnSearch.layer.cornerRadius = 10
         btnSearch.layer.maskedCorners = [.layerMaxXMaxYCorner,
@@ -75,21 +74,29 @@ final class SearchFalconeController: BaseViewController {
         planetsVC.onSelectedPlanet = { [weak self] newPlanet in
             self?.presenter.sections[section].planet = newPlanet
             self?.presenter.sections[section].vehicle = nil
+            self?.presenter.updateVehicleStatusForEachPlanet(at: section)
             self?.tableView.reloadSections([section], with: .automatic)
-
         }
         navigationController?.pushViewController(planetsVC, animated: true)
     }
 
     private func showProgressHUD() {
         ProgressHUD.animationType = .circleStrokeSpin
-        ProgressHUD.colorHUD = UIColor("#4991DC")
+        ProgressHUD.colorHUD = AppColor.COLOR_4991DC
         ProgressHUD.show()
     }
 
     @IBAction private func actionFindFalcone(_ sender: UIButton) {
         showProgressHUD()
         presenter.findFalcone()
+    }
+
+    private func showMessage(_ message: String) {
+
+        let alertVC = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertVC.addAction(okAction)
+        self.present(alertVC, animated: true, completion: nil)
     }
 }
 
@@ -108,11 +115,13 @@ extension SearchFalconeController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SpaceVehicleCell.className, for: indexPath) as? SpaceVehicleCell else {
             return UITableViewCell()
         }
+        guard let vehicleRow = presenter.vehicle(at: indexPath) else {
+            return UITableViewCell()
+        }
         let sectionModel = presenter.sections[indexPath.section]
-        let vehicle = presenter.vehicles[indexPath.row]
-        cell.title = vehicle.name
-        cell.isDisable = vehicle.maxDistance < (sectionModel.planet?.distance ?? 0)
-        cell.isSelectedVehicle = vehicle.name == sectionModel.vehicle?.name
+        cell.vehicle = vehicleRow.vehicle
+        cell.isDisable = !vehicleRow.isEnable
+        cell.isSelectedVehicle = vehicleRow.vehicle.name == sectionModel.vehicle?.name
         return cell
     }
 }
@@ -134,18 +143,6 @@ extension SearchFalconeController: UITableViewDelegate {
         return headerView
     }
 
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.001
-    }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
-    }
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard self.presenter.sections[indexPath.section].vehicle?.name != presenter.vehicles[indexPath.row].name else {
             return
@@ -155,6 +152,7 @@ extension SearchFalconeController: UITableViewDelegate {
             return
         }
 
+        // Reset selected vehicle
         var indexPaths = [IndexPath]()
         for index in 0..<presenter.vehicles.count {
             indexPaths.append(IndexPath(row: index, section: indexPath.section))
@@ -163,17 +161,33 @@ extension SearchFalconeController: UITableViewDelegate {
         // update selected vehicle
         self.presenter.sections[indexPath.section].vehicle = presenter.vehicles[indexPath.row]
         self.tableView.reloadRows(at: indexPaths, with: .automatic)
-        
+
         // update search falcone button status
-        self.enableSearch = self.presenter.enableButtonFindFalcone()
+        self.enableSearch = presenter.enableButtonFindFalcone()
 
         // update time taken
         timeTaken = presenter.calculateTimeTaken()
+    }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.001
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
     }
 }
 
 //MARK: - SearchFalcomView
 extension SearchFalconeController: SearchFalconeView {
+
+    func onShowProgress() {
+        showProgressHUD()
+    }
 
     func onPrepareDataCompleted() {
         ProgressHUD.dismiss()
@@ -183,17 +197,28 @@ extension SearchFalconeController: SearchFalconeView {
     func onSearchFalconeCompeted(_ falcone: FindFalconeResult) {
         ProgressHUD.dismiss()
         guard falcone.status == "success" else {
+            if let error = falcone.error {
+                showMessage(error)
+            } else {
+                showMessage("Oh Sorry, cannot find Falcone!")
+            }
             return
         }
         let resultVC = UIStoryboard.loadController(from: "Main", of: SearchResultController.self)
         resultVC.result = falcone
         resultVC.timeTaken = timeTaken
+        resultVC.onStartAgain = { [weak self] in
+            //Reset allData
+            self?.presenter.resetData()
+            self?.tableView.reloadData()
+        }
         navigationController?.pushViewController(resultVC, animated: true)
     }
 
     func onError(_ errorMsg: String) {
         //TODO: handle error here
         ProgressHUD.dismiss()
+        showMessage(errorMsg)
     }
 }
 

@@ -10,6 +10,8 @@ import FalconeCore
 
 protocol SearchFalconeView: AnyObject {
 
+    func onShowProgress()
+
     func onPrepareDataCompleted()
 
     func onSearchFalconeCompeted(_ falcone: FindFalconeResult)

@@ -15,6 +15,7 @@ final class SearchResultController: BaseViewController {
     @IBOutlet weak var lblResultFalconeName: UILabel!
     @IBOutlet weak var btnStartAgain: UIButton!
 
+    var onStartAgain: (() -> Void)?
     var result: FindFalconeResult?
     var timeTaken: Int = 0
 
@@ -22,14 +23,20 @@ final class SearchResultController: BaseViewController {
         super.viewDidLoad()
         setupUI()
 
-        lblResultMessage.text = "Success!, Congratulations on Finding Falcone. King Shan is mighty pleased."
-        lblResultFalconeName.text = "Planet found: \(result?.planetName ?? "")"
-        lblResultTimeTaken.text = "Time Taken: \(timeTaken)"
+        lblResultMessage.text = "SearchResult.Message".localized
+        lblResultFalconeName.text = "\("SearchResult.PlanetFound".localized): \(result?.planetName ?? "")"
+        lblResultTimeTaken.text = "\("FindingFalcone.TimeTaken".localized): \(timeTaken)"
     }
 
     private func setupUI() {
-        btnStartAgain.backgroundColor = UIColor("#4991DC")
-        btnStartAgain.setTitle("Start Again", for: .normal)
+
+        title = "Finding Falcone!"
+        let backButton = UIBarButtonItem()
+        backButton.title = "Back"
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+
+        btnStartAgain.backgroundColor = AppColor.COLOR_4991DC
+        btnStartAgain.setTitle("SearchResult.StartAgain".localized, for: .normal)
         btnStartAgain.setTitleColor(.white, for: .normal)
         btnStartAgain.layer.cornerRadius = 10
         btnStartAgain.layer.maskedCorners = [.layerMaxXMaxYCorner,
@@ -39,6 +46,7 @@ final class SearchResultController: BaseViewController {
     }
 
     @IBAction private func actionStartAgain(_ sender: UIButton) {
+        onStartAgain?()
         navigationController?.popViewController(animated: true)
     }
 }

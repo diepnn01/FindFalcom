@@ -7,3 +7,10 @@
 */
 
 "FindingFalcone.Title" = "Finding Falcone!";
+"FindingFalcone.Guide" = "Select planets you want to search in:";
+"FindingFalcone.BtnSearch.Title" = "Find Falcone";
+"FindingFalcone.TimeTaken" = "Time Taken";
+
+"SearchResult.Message" = "Success!, Congratulations on Finding Falcone. King Shan is mighty pleased.";
+"SearchResult.PlanetFound" = "Planet found";
+"SearchResult.StartAgain" = "Start Again";

@@ -9,10 +9,12 @@ import Foundation
 
 public struct FindFalconeResult: CoreObject {
     public var status: String?
+    public var error: String?
     public var planetName: String?
 
     public init(data: [AnyHashable : Any]?) {
         status = data?["status"] as? String
         planetName = data?["planet_name"] as? String
+        error = data?["error"] as? String
     }
 }

@@ -18,6 +18,10 @@ final class SelectPlanetController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Select Planet"
+        let backButton = UIBarButtonItem()
+        backButton.title = "Back"
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
 }
 
