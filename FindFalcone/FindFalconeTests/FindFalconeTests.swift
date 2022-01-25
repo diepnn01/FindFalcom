@@ -6,12 +6,21 @@
 //
 
 import XCTest
+import FalconeCore
+
 @testable import FindFalcone
 
 class FindFalconeTests: XCTestCase {
 
+    var presenter: SearchFalconePresenter!
+    var service: GetUserTokenService!
+    var findFalconeService: FindFalconeService!
+
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        try super.setUpWithError()
+        presenter =  SearchFalconePresenter()
+        service = GetUserTokenService()
+        findFalconeService = FindFalconeService()
     }
 
     override func tearDownWithError() throws {
@@ -24,6 +33,44 @@ class FindFalconeTests: XCTestCase {
         // Any test you write for XCTest can be annotated as throws and async.
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    }
+
+    func testGetTokenPlanet() throws {
+        let promise = expectation(description: "Completion handler invoked")
+        service.getUserToken()
+            .cloudResponse({ [weak self] token in
+                self?.presenter.token = token.token ?? ""
+            })
+            .finally {
+            promise.fulfill()
+        }
+
+        wait(for: [promise], timeout: 30)
+        XCTAssertNotEqual(presenter.token, "")
+    }
+
+    func testGetPlanets() throws {
+        let promise = expectation(description: "Completion handler invoked")
+        findFalconeService.getPlanets().cloudResponse { [weak self] collection in
+            self?.presenter.planets = collection.items
+        }.finally {
+            promise.fulfill()
+        }
+
+        wait(for: [promise], timeout: 30)
+        XCTAssertNotEqual(presenter.planets.count, 0)
+    }
+
+    func testGetVehicles() throws {
+        let promise = expectation(description: "Completion handler invoked")
+        findFalconeService.getVehicles().cloudResponse { [weak self] collection in
+            self?.presenter.vehicles = collection.items
+        }.finally {
+            promise.fulfill()
+        }
+
+        wait(for: [promise], timeout: 30)
+        XCTAssertNotEqual(presenter.vehicles.count, 0)
     }
 
     func testPerformanceExample() throws {
